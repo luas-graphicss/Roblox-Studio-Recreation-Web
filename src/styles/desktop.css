@@ -1,0 +1,86 @@
+.rsw-winctl { border-radius: 3px; }
+.rsw-runchip { border-radius: 4px; }
+.rsw-run-btn { border-radius: 3px; }
+.rsw-tab { border-radius: 4px; font-size: 12px; }
+.rsw-tab--active::after { border-radius: 0; left: 8px; right: 8px; }
+.rsw-util { border-radius: 3px; }
+.rsw-util:hover svg { transform: none; }
+.rsw-tool { border-radius: 3px; }
+.rsw-status__chip { border-radius: 3px; }
+.rsw-panel-toggle { border-radius: 4px; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3); }
+.rsw-playtest-badge {
+  border-radius: 3px;
+  padding: 1px 6px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.rsw-menubar__btn { border-radius: 3px; padding: 0 8px; }
+.rsw-menu { padding: 3px; min-width: 220px; }
+.rsw-menu__item { height: 26px; font-size: 12px; border-radius: 3px; padding: 4px 8px; }
+.rsw-menu__shortcut { font-size: 11px; opacity: 0.8; }
+.rsw-ctx__item { border-radius: 3px; }
+.rsw-modal__title { font-size: 13px; font-weight: 600; }
+.rsw-modal__header { padding: 9px 12px; }
+.rsw-modal__body { font-size: 12px; }
+.rsw-modal__close { border-radius: 3px; }
+.rsw-input:focus,
+.rsw-textarea:focus,
+.rsw-select:focus {
+  box-shadow: none;
+  border-color: var(--rsw-border-focus);
+}
+.rsw-snap__input:focus { box-shadow: none; }
+.rsw-gs__tab { border-radius: 4px; }
+.rsw-gs__list,
+.rsw-shortcuts { border-radius: 4px; }
+.rsw-gs__preview,
+.rsw-publish__thumb,
+.rsw-publish__preview { border-radius: 4px; }
+.rsw-picker__btn { border-radius: 4px; }
+.rsw-output__settings { border-radius: 5px; box-shadow: var(--rsw-shadow-dropdown); }
+.rsw-error-state { border-radius: 4px; }
+.rsw-rtool { border-radius: 3px; }
+.rsw-rtool__arrow { border-radius: 2px; }
+.rsw-snap__toggle,
+.rsw-snap__input { border-radius: 3px; }
+.rsw-dock__title {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.rsw-dock__close { border-radius: 3px; }
+.rsw-row { font-size: 12px; }
+.rsw-kb__list { border-radius: 4px; }
+.rsw-curve__caret {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.rsw-start { transform: none; transition: opacity 0.15s ease; }
+.rsw-start.is-visible { transform: none; }
+.rsw-start__heading { font-size: 15px; font-weight: 600; letter-spacing: 0.01em; margin: 0 0 12px; }
+.rsw-start__brand { font-weight: 600; font-size: 12px; letter-spacing: 0.03em; }
+.rsw-start__search { border-radius: 4px; }
+.rsw-start__btn { border-radius: 3px; padding: 5px 11px; }
+.rsw-start__navbtn { border-radius: 4px; font-size: 12px; padding: 7px 9px; }
+.rsw-start__card { border-radius: 4px; }
+.rsw-start__card:hover,
+.rsw-start__card:focus-visible { box-shadow: none; }
+.rsw-start__cardtitle { font-size: 12px; }
+.rsw-start__cardmenu { border-radius: 3px; }
+.rsw-start__renameinput { border-radius: 3px; }
+.rsw-start__tplgrid { gap: 12px; }
+.rsw-tbx__type { border-radius: 3px; }
+.rsw-tbx__category,
+.rsw-tbx__fselect { border-radius: 3px; }
+.rsw-tbx__input { border-radius: 3px; }
+.rsw-tbx__filters,
+.rsw-tbx__viewtoggle { border-radius: 3px; }
+.rsw-tbx__clear { border-radius: 3px; }
+.rsw-tbx__card:hover { transform: none; }
+.rsw-tbx__skel { border-radius: 4px; }
+.rsw-tbx__retry { border-radius: 3px; }
+.rsw-tbx-preview { border-radius: 5px; box-shadow: var(--rsw-shadow-float); }
+.rsw-tbx-preview__play { border-radius: 3px; }
+.rsw-cg__avatar { background: var(--rsw-accent); font-weight: 600; }
+.rsw-mon__icon { background: var(--rsw-bg-elevated); }

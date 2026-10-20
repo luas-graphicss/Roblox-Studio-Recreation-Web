@@ -1,0 +1,18 @@
+.rsw-thumb-host {
+  position: relative;
+}
+
+.rsw-thumb-host.is-failed::after {
+  content: "\26a0";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: var(--rsw-text-placeholder, #a3a3a3);
+  pointer-events: none;
+}
+.rsw-thumb-host.is-failed img {
+  opacity: 0;
+}

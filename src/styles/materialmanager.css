@@ -1,0 +1,163 @@
+.rsw-mm {
+  position: absolute;
+  z-index: var(--rsw-z-viewport-chrome);
+  width: 540px;
+  max-width: calc(100vw - 40px);
+  max-height: min(620px, calc(100vh - 120px));
+  display: flex;
+  flex-direction: column;
+  background: var(--rsw-bg-panel, #2a2a2e);
+  border: 1px solid var(--rsw-border, #3c3c42);
+  border-radius: 8px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+  color: var(--rsw-text, #ddd);
+  font-size: 12px;
+  overflow: hidden;
+}
+.rsw-mm[hidden] { display: none; }
+.rsw-mm__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--rsw-border, #3c3c42);
+  cursor: move;
+  user-select: none;
+}
+.rsw-mm__title { font-weight: 600; flex: 1; }
+.rsw-mm__act {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: inherit;
+  padding: 3px 8px;
+  cursor: pointer;
+}
+.rsw-mm__act:hover { background: rgba(255, 255, 255, 0.08); }
+.rsw-mm__act.is-active {
+  background: rgba(86, 156, 214, 0.25);
+  border-color: rgba(86, 156, 214, 0.7);
+}
+.rsw-mm__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--rsw-border, #3c3c42);
+  flex-wrap: wrap;
+}
+.rsw-mm__search {
+  flex: 1;
+  min-width: 140px;
+  background: var(--rsw-bg-input, #1f1f23);
+  border: 1px solid var(--rsw-border, #3c3c42);
+  border-radius: 4px;
+  color: inherit;
+  padding: 4px 8px;
+}
+.rsw-mm__filter {
+  background: var(--rsw-bg-input, #1f1f23);
+  border: 1px solid var(--rsw-border, #3c3c42);
+  border-radius: 4px;
+  color: inherit;
+  padding: 4px 6px;
+}
+.rsw-mm__body { overflow: auto; padding: 10px; flex: 1; }
+.rsw-mm__section-title {
+  font-weight: 600;
+  margin: 12px 0 6px;
+  opacity: 0.85;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.rsw-mm__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(86px, 1fr));
+  gap: 8px;
+}
+.rsw-mm__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 4px 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--rsw-border, #3c3c42);
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+}
+.rsw-mm__card:hover { background: rgba(255, 255, 255, 0.08); }
+.rsw-mm__card.is-current {
+  border-color: #569cd6;
+  box-shadow: 0 0 0 1px #569cd6 inset;
+}
+.rsw-mm__thumb {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #161618;
+}
+.rsw-mm__name {
+  font-size: 11px;
+  line-height: 1.2;
+  word-break: break-word;
+}
+.rsw-mm__variant-base { font-size: 10px; opacity: 0.65; }
+.rsw-mm__row-actions { display: flex; gap: 4px; }
+.rsw-mm__mini {
+  background: transparent;
+  border: 1px solid var(--rsw-border, #3c3c42);
+  border-radius: 4px;
+  color: inherit;
+  font-size: 10px;
+  padding: 1px 6px;
+  cursor: pointer;
+}
+.rsw-mm__mini:hover { background: rgba(255, 255, 255, 0.1); }
+.rsw-mm__empty { opacity: 0.6; padding: 8px 2px; }
+.rsw-mm__footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-top: 1px solid var(--rsw-border, #3c3c42);
+}
+.rsw-mm__current { flex: 1; opacity: 0.85; }
+.rsw-mm__form { display: flex; flex-direction: column; gap: 6px; }
+.rsw-mm__formrow { display: flex; align-items: center; gap: 8px; }
+.rsw-mm__formlabel { width: 120px; opacity: 0.8; flex: none; }
+.rsw-mm__forminput {
+  flex: 1;
+  min-width: 0;
+  background: var(--rsw-bg-input, #1f1f23);
+  border: 1px solid var(--rsw-border, #3c3c42);
+  border-radius: 4px;
+  color: inherit;
+  padding: 4px 8px;
+}
+.rsw-mm__maprow { display: flex; align-items: center; gap: 6px; flex: 1; min-width: 0; }
+.rsw-mm__mapval {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0.8;
+  font-family: monospace;
+  font-size: 11px;
+}
+.rsw-ed__assetwrap { display: flex; gap: 4px; align-items: center; }
+.rsw-ed__assetwrap .rsw-ed__text--asset { flex: 1; min-width: 0; }
+.rsw-ed__browse {
+  flex: none;
+  background: var(--rsw-bg-input, #1f1f23);
+  border: 1px solid var(--rsw-border, #3c3c42);
+  border-radius: 4px;
+  color: inherit;
+  font-size: 10px;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+.rsw-ed__browse:hover { background: rgba(255, 255, 255, 0.1); }

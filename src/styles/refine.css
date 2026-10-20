@@ -1,0 +1,220 @@
+.rsw-icon ellipse {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.rsw-icon--filled ellipse,
+.rsw-icon--filled circle {
+  fill: currentColor;
+  stroke: none;
+}
+.rsw-modal {
+  border-radius: var(--rsw-radius-dialog);
+  box-shadow: var(--rsw-shadow-dialog);
+}
+.rsw-modal__header {
+  padding: 10px 14px;
+}
+.rsw-modal__title {
+  font-size: 12px;
+  letter-spacing: 0.01em;
+}
+.rsw-modal__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+.rsw-modal__close:hover {
+  background: var(--rsw-danger);
+  color: #fff;
+}
+.rsw-btn {
+  border-radius: var(--rsw-radius-btn);
+  padding: 6px 12px;
+}
+.rsw-btn--lg {
+  padding: 8px 20px;
+}
+.rsw-input,
+.rsw-textarea,
+.rsw-select {
+  border-radius: var(--rsw-radius-input);
+  padding: 6px 8px;
+}
+.rsw-input:focus,
+.rsw-textarea:focus,
+.rsw-select:focus {
+  border-color: var(--rsw-accent);
+  box-shadow: 0 0 0 1px var(--rsw-accent);
+}
+.rsw-gs {
+  grid-template-columns: 192px 1fr;
+}
+.rsw-gs__side {
+  padding: 10px 8px;
+  gap: 1px;
+}
+.rsw-gs__tab {
+  border-radius: 4px;
+  padding: 7px 10px;
+  gap: 9px;
+}
+.rsw-gs__tabicon {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+.rsw-gs__tab .rsw-icon {
+  opacity: 0.85;
+}
+.rsw-gs__tab.is-active {
+  font-weight: 500;
+}
+.rsw-gs__tab.is-active .rsw-icon {
+  opacity: 1;
+}
+.rsw-gs__pane .rsw-field:not(.rsw-field--inline) {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 14px;
+  row-gap: 3px;
+  margin-bottom: 9px;
+}
+.rsw-gs__pane .rsw-field:not(.rsw-field--inline) > .rsw-field__label {
+  grid-column: 1;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--rsw-text-primary);
+  opacity: 0.92;
+}
+.rsw-gs__pane .rsw-field:not(.rsw-field--inline) > .rsw-field__hint,
+.rsw-gs__pane .rsw-field:not(.rsw-field--inline) > .rsw-charcount {
+  grid-column: 2;
+  margin-top: 0;
+}
+.rsw-gs__pane .rsw-field .rsw-input--number {
+  width: 110px;
+}
+.rsw-gs__pane:not(.rsw-gs__pane--kb) > .rsw-check {
+  margin-left: 204px;
+  margin-bottom: 8px;
+}
+.rsw-gs__pane:not(.rsw-gs__pane--kb) > .rsw-field__hint {
+  margin-left: 204px;
+}
+.rsw-gs__pane .rsw-section-title {
+  margin: 18px 0 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--rsw-border-subtle);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--rsw-text-secondary);
+}
+.rsw-gs__pane .rsw-section-title:first-child {
+  margin-top: 0;
+}
+.rsw-menu__check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.rsw-menu__check .rsw-icon {
+  color: var(--rsw-accent);
+}
+.rsw-notif__icon,
+.rsw-toast__icon,
+.rsw-val__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.rsw-notif__dismiss,
+.rsw-toast__close,
+.rsw-val__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.rsw-val__row.is-running .rsw-val__icon .rsw-icon {
+  animation: rsw-spin 0.9s linear infinite;
+}
+@keyframes rsw-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.rsw-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5px;
+}
+.rsw-stars .rsw-icon {
+  color: #e0a53f;
+}
+.rsw-stars__num {
+  margin-left: 5px;
+  color: var(--rsw-text-secondary);
+  font-size: 11px;
+}
+.rsw-tbx__star {
+  display: inline-flex;
+}
+.rsw-tbx__star .rsw-icon {
+  color: #e0a53f;
+}
+.rsw-tbx__star:not(.is-on) .rsw-icon {
+  color: var(--rsw-rating-empty);
+}
+.rsw-insobj__star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.rsw-insobj__star .rsw-icon {
+  color: var(--rsw-rating-empty);
+}
+.rsw-insobj__star.is-fav .rsw-icon,
+.rsw-insobj__star:hover .rsw-icon {
+  color: #e0a53f;
+}
+.rsw-pmgr__thumb,
+.rsw-pmkt__thumb {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.rsw-pmkt__shot-icon {
+  display: inline-flex;
+  opacity: 0.7;
+}
+.rsw-pmkt__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.rsw-tbx__playpreview,
+.rsw-am__preview,
+.rsw-start__cardmenu {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.rsw-tbx-preview__play {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.rsw-props__soundpreview {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}

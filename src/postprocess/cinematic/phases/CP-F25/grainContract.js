@@ -1,0 +1,9 @@
+export const FILM_GRAIN_PHASE = "CP-F25";
+export const FILM_GRAIN_SETTINGS = "CP-F25.settings";
+export const FILM_GRAIN_CAPTURE = "CP-F25.capture";
+export const FILM_GRAIN_COLOR = "CP-F25.color";
+export const FILM_GRAIN_STATE = "CP-F25.state";
+export const FILM_GRAIN_PROFILE = "independent-centered-grain-v1";
+export const FILM_GRAIN_AMPLITUDE = 0.08;
+export const FILM_GRAIN_MAX_TEXTURE_EDGE = 1024;
+export const FILM_GRAIN_MAX_STANDARDIZED_PEAK = 6;

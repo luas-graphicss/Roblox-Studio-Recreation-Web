@@ -1,0 +1,10 @@
+export const CHROMATIC_OWNER = "CP-F23";
+export const CHROMATIC_SETTINGS_KEY = "CP-F23.chromaticAberration";
+export const CHROMATIC_PASS = "CP-F23.chromaticAberration";
+export const CHROMATIC_COLOR = "CP-F23.color";
+export const CHROMATIC_STATE = "CP-F23.state";
+export const CHROMATIC_PROFILE = "diagnostic-radial-rgb-v1";
+export const CHROMATIC_ORDER = 2300;
+export const CHROMATIC_CHANNEL_WEIGHTS = Object.freeze([1, 0.5, 0]);
+export const CHROMATIC_INTENSITY_SCALE = 0.01;
+export const CHROMATIC_CAMERA_RESOURCE = "CP-F03.camera";

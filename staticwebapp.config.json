@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/staticwebapp.config.json",
+  "globalHeaders": {
+    "Content-Security-Policy": "frame-ancestors 'none'",
+    "X-Frame-Options": "DENY",
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Cross-Origin-Opener-Policy": "same-origin",
+    "Permissions-Policy": "geolocation=(), camera=(), microphone=(), payment=(), usb=(), serial=(), hid=(), idle-detection=()",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+  },
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  }
+}

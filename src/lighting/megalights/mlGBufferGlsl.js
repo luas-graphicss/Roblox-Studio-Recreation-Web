@@ -1,0 +1,110 @@
+import { MAXIMUM_VELOCITY_IN_UV } from "./mlVelocityEncodingCore.js";
+
+export const GBUFFER_OUTPUT_LOCATIONS = Object.freeze({
+  sceneDepth: 0,
+  sceneNormal: 1,
+  sceneAlbedo: 2,
+  sceneVelocity: 3,
+});
+
+export function buildGBufferVertexShader() {
+  return [
+    "// Current clip position comes from the live camera; the previous one comes",
+    "// from the camera AND the model matrix of the previous frame, so the",
+    "// velocity covers camera motion and object motion at once.",
+    "uniform mat4 uPreviousModelMatrix;",
+    "uniform mat4 uPreviousViewProjectionMatrix;",
+    "uniform mat3 uWorldNormalMatrix;",
+    "out vec3 vViewPosition;",
+    "out vec3 vWorldNormal;",
+    "out vec4 vCurrentClipPosition;",
+    "out vec4 vPreviousClipPosition;",
+    "void main() {",
+    "#ifdef USE_INSTANCING",
+    "  // three declares instanceMatrix only for an InstancedMesh. Ignoring it",
+    "  // would collapse every instance onto the mesh origin: the G-buffer would",
+    "  // silently disagree with the visible image, and no screenshot of the",
+    "  // BEAUTY pass would ever show it.",
+    "  mat4 currentModelMatrix = modelMatrix * instanceMatrix;",
+    "  mat3 currentWorldNormalMatrix = transpose(inverse(mat3(currentModelMatrix)));",
+    "#else",
+    "  mat4 currentModelMatrix = modelMatrix;",
+    "  mat3 currentWorldNormalMatrix = uWorldNormalMatrix;",
+    "#endif",
+    "  vec4 worldPosition = currentModelMatrix * vec4(position, 1.0);",
+    "  vec4 viewPosition = viewMatrix * worldPosition;",
+    "  vViewPosition = viewPosition.xyz;",
+    "  // The normal matrix is the inverse transpose: mat3(modelMatrix) would",
+    "  // shear the normal on any non uniform scale, and a sheared normal is a",
+    "  // wrong BRDF for every sampling phase downstream.",
+    "  vWorldNormal = normalize(currentWorldNormalMatrix * normal);",
+    "  vCurrentClipPosition = projectionMatrix * viewPosition;",
+    "  // Instanced meshes keep no per instance history, so the fill pass hands",
+    "  // them uVelocityValidity = 0 and this term is discarded by the fragment.",
+    "  vPreviousClipPosition = uPreviousViewProjectionMatrix * (uPreviousModelMatrix * vec4(position, 1.0));",
+    "  gl_Position = vCurrentClipPosition;",
+    "}",
+  ].join("\n");
+}
+
+export function buildGBufferFragmentShader() {
+  const maximumVelocity = MAXIMUM_VELOCITY_IN_UV.toFixed(6);
+  return [
+    "precision highp float;",
+    "uniform vec3 uAlbedo;",
+    "uniform float uRoughness;",
+    "uniform float uMetalness;",
+    "uniform float uCameraNear;",
+    "uniform float uCameraFar;",
+    "// 0 on the first frame a mesh is drawn: without a previous model matrix any",
+    "// velocity would be invented, and an invented velocity is worse than none -",
+    "// the temporal filter would reproject history onto the wrong pixel.",
+    "uniform float uVelocityValidity;",
+    "in vec3 vViewPosition;",
+    "in vec3 vWorldNormal;",
+    "in vec4 vCurrentClipPosition;",
+    "in vec4 vPreviousClipPosition;",
+    "layout(location = " + GBUFFER_OUTPUT_LOCATIONS.sceneDepth + ") out vec4 outSceneDepth;",
+    "layout(location = " + GBUFFER_OUTPUT_LOCATIONS.sceneNormal + ") out vec4 outSceneNormal;",
+    "layout(location = " + GBUFFER_OUTPUT_LOCATIONS.sceneAlbedo + ") out vec4 outSceneAlbedo;",
+    "layout(location = " + GBUFFER_OUTPUT_LOCATIONS.sceneVelocity + ") out vec4 outSceneVelocity;",
+    "void main() {",
+    "  float linearViewDepth = -vViewPosition.z;",
+    "  float depthSpan = max(uCameraFar - uCameraNear, 1e-6);",
+    "  float normalizedViewDepth = clamp((linearViewDepth - uCameraNear) / depthSpan, 0.0, 1.0);",
+    "  // Alpha 1 means COVERED. The sky keeps the cleared 0 and every consumer",
+    "  // must test it before trusting the other three attachments.",
+    "  outSceneDepth = vec4(linearViewDepth, normalizedViewDepth, 0.0, 1.0);",
+    "  vec3 worldNormal = normalize(vWorldNormal);",
+    "  outSceneNormal = vec4(worldNormal * 0.5 + 0.5, clamp(uRoughness, 0.0, 1.0));",
+    "  outSceneAlbedo = vec4(max(uAlbedo, vec3(0.0)), clamp(uMetalness, 0.0, 1.0));",
+    "  bool clipPositionIsDegenerate = vCurrentClipPosition.w <= 1e-6 || vPreviousClipPosition.w <= 1e-6;",
+    "  if (clipPositionIsDegenerate || uVelocityValidity < 0.5) {",
+    "    // Behind the near plane the previous frame projects INVERTED. Writing a",
+    "    // valid looking velocity there is what smears a trail across the whole",
+    "    // screen when an object crosses the camera.",
+    "    outSceneVelocity = vec4(0.5, 0.5, 0.0, 0.0);",
+    "    return;",
+    "  }",
+    "  vec2 currentUv = (vCurrentClipPosition.xy / vCurrentClipPosition.w) * 0.5 + 0.5;",
+    "  vec2 previousUv = (vPreviousClipPosition.xy / vPreviousClipPosition.w) * 0.5 + 0.5;",
+    "  vec2 screenVelocity = clamp(currentUv - previousUv, vec2(-" + maximumVelocity + "), vec2(" + maximumVelocity + "));",
+    "  outSceneVelocity = vec4(screenVelocity / (2.0 * " + maximumVelocity + ") + 0.5, 0.0, 1.0);",
+    "}",
+  ].join("\n");
+}
+
+
+export function buildAttachmentBlitFragmentShader() {
+  return [
+    "precision highp float;",
+    "uniform sampler2D uSourceAttachment;",
+    "out vec4 outAttachmentCopy;",
+    "void main() {",
+    "  // texelFetch, never texture(): the blit target has the same size as the",
+    "  // attachment, so the copy must be texel exact. A filtered read would",
+    "  // average two normals and the probe gate would fail for the wrong reason.",
+    "  outAttachmentCopy = texelFetch(uSourceAttachment, ivec2(gl_FragCoord.xy), 0);",
+    "}",
+  ].join("\n");
+}

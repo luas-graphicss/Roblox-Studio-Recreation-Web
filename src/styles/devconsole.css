@@ -1,0 +1,374 @@
+.rsw-devcon {
+  position: fixed;
+  z-index: var(--rsw-z-float-window);
+  display: flex;
+  flex-direction: column;
+  background: rgba(18, 20, 24, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 6px;
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.55);
+  color: #e8e8ec;
+  font: 12px/1.4 "Segoe UI", system-ui, sans-serif;
+  user-select: none;
+  overflow: hidden;
+}
+.rsw-devcon.is-minimized .rsw-devcon__tabs,
+.rsw-devcon.is-minimized .rsw-devcon__body,
+.rsw-devcon.is-minimized .rsw-devcon__resize {
+  display: none;
+}
+.rsw-devcon__titlebar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  background: rgba(255, 255, 255, 0.07);
+  cursor: move;
+  flex: 0 0 auto;
+}
+.rsw-devcon__title {
+  flex: 1;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+.rsw-devcon__btn {
+  width: 22px;
+  height: 20px;
+  border: none;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #e8e8ec;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
+}
+.rsw-devcon__btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+.rsw-devcon__btn--close:hover {
+  background: #c0392b;
+}
+.rsw-devcon__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 4px 6px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  flex: 0 0 auto;
+}
+.rsw-devcon__tab {
+  border: none;
+  border-radius: 4px 4px 0 0;
+  padding: 4px 9px;
+  background: transparent;
+  color: #b9bcc4;
+  cursor: pointer;
+  font-size: 12px;
+}
+.rsw-devcon__tab:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+.rsw-devcon__tab.is-active {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+.rsw-devcon__tab.has-errors {
+  color: #ff8a80;
+}
+.rsw-devcon__body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.rsw-devcon__pane {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.rsw-devcon__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 8px;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+}
+.rsw-devcon__search {
+  flex: 1;
+  min-width: 120px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 3px;
+  color: #e8e8ec;
+  padding: 3px 7px;
+  font-size: 12px;
+}
+.rsw-devcon__filter {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #cfd2d9;
+  padding: 3px 8px;
+  cursor: pointer;
+  font-size: 11px;
+}
+.rsw-devcon__filter:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+.rsw-devcon__filter.is-on {
+  background: #2f6fed;
+  border-color: #2f6fed;
+  color: #fff;
+}
+.rsw-devcon__filter--clear {
+  margin-left: auto;
+}
+.rsw-devcon__loglist {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  position: relative;
+  font-family: Consolas, Menlo, monospace;
+  font-size: 11.5px;
+}
+.rsw-devcon__logspacer {
+  position: relative;
+  width: 100%;
+}
+.rsw-devcon__loglayer {
+  position: absolute;
+  inset: 0;
+}
+.rsw-devcon__logrow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 20px;
+  padding: 2px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+.rsw-devcon__logrow.is-expandable {
+  cursor: pointer;
+}
+.rsw-devcon__logrow.is-expanded {
+  background: rgba(255, 255, 255, 0.06);
+  white-space: normal;
+  overflow: auto;
+}
+.rsw-devcon__logdetail {
+  margin: 4px 0 0;
+  padding: 4px 6px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 3px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 11px;
+  user-select: text;
+}
+.rsw-devcon__logrow--output { color: #e8e8ec; }
+.rsw-devcon__logrow--info { color: #7fc2e8; }
+.rsw-devcon__logrow--warn { color: #e8c84b; }
+.rsw-devcon__logrow--error { color: #ff7a70; }
+.rsw-devcon__memtable,
+.rsw-devcon__scrtable,
+.rsw-devcon__kvtable {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding-bottom: 6px;
+}
+.rsw-devcon__memtotal {
+  font-weight: 600;
+  margin-right: auto;
+}
+.rsw-devcon__memrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 10px;
+  min-height: 20px;
+}
+.rsw-devcon__memrow--head {
+  color: #9aa0ab;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  background: rgba(18, 20, 24, 0.95);
+}
+.rsw-devcon__memrow.is-expandable {
+  cursor: pointer;
+}
+.rsw-devcon__memrow.is-expandable:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+.rsw-devcon__memarrow {
+  width: 12px;
+  flex: 0 0 auto;
+  color: #9aa0ab;
+}
+.rsw-devcon__memname {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rsw-devcon__memval {
+  width: 84px;
+  text-align: right;
+  font-family: Consolas, Menlo, monospace;
+  flex: 0 0 auto;
+}
+.rsw-devcon__membar {
+  width: 26%;
+  max-width: 220px;
+  height: 9px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+.rsw-devcon__membar--head {
+  background: transparent;
+}
+.rsw-devcon__membarfill {
+  display: block;
+  height: 100%;
+  background: #2f6fed;
+}
+.rsw-devcon__memdelta {
+  width: 74px;
+  text-align: right;
+  font-family: Consolas, Menlo, monospace;
+  color: #9aa0ab;
+  flex: 0 0 auto;
+}
+.rsw-devcon__memdelta.is-up { color: #ff8a80; }
+.rsw-devcon__memdelta.is-down { color: #7ddf8f; }
+.rsw-devcon__scrrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 10px;
+  min-height: 20px;
+}
+.rsw-devcon__scrrow--head {
+  color: #9aa0ab;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.rsw-devcon__scrrow--head .rsw-devcon__scrcell {
+  cursor: pointer;
+}
+.rsw-devcon__scrrow.is-openable {
+  cursor: pointer;
+}
+.rsw-devcon__scrrow.is-openable:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+.rsw-devcon__scrrow.is-warm { color: #e8c84b; }
+.rsw-devcon__scrrow.is-hot { color: #ff7a70; }
+.rsw-devcon__scrcell {
+  font-family: Consolas, Menlo, monospace;
+  font-size: 11.5px;
+}
+.rsw-devcon__scrcell--name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: inherit;
+}
+.rsw-devcon__scrcell--context { width: 110px; flex: 0 0 auto; }
+.rsw-devcon__scrcell--activity { width: 84px; text-align: right; flex: 0 0 auto; }
+.rsw-devcon__scrcell--rate { width: 78px; text-align: right; flex: 0 0 auto; }
+.rsw-devcon__scrcell--time { width: 78px; text-align: right; flex: 0 0 auto; }
+.rsw-devcon__section {
+  padding: 7px 10px 3px;
+  color: #9aa0ab;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 10.5px;
+  letter-spacing: 0.4px;
+}
+.rsw-devcon__kvrow {
+  display: flex;
+  gap: 10px;
+  padding: 2px 10px;
+}
+.rsw-devcon__kvlabel {
+  width: 220px;
+  flex: 0 0 auto;
+  color: #cfd2d9;
+}
+.rsw-devcon__kvvalue {
+  flex: 1;
+  min-width: 0;
+  font-family: Consolas, Menlo, monospace;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rsw-devcon__empty {
+  padding: 10px;
+  color: #9aa0ab;
+  font-style: italic;
+}
+.rsw-devcon__cmdout {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 6px 10px;
+  font-family: Consolas, Menlo, monospace;
+  font-size: 11.5px;
+  user-select: text;
+}
+.rsw-devcon__cmdline {
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding: 1px 0;
+}
+.rsw-devcon__cmdecho {
+  color: #9fe08f;
+}
+.rsw-devcon__cmdbar {
+  display: flex;
+  gap: 6px;
+  padding: 6px 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  flex: 0 0 auto;
+}
+.rsw-devcon__cmdctx {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 3px;
+  color: #e8e8ec;
+  font-size: 12px;
+}
+.rsw-devcon__cmdinput {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 3px;
+  color: #e8e8ec;
+  padding: 4px 8px;
+  font-family: Consolas, Menlo, monospace;
+  font-size: 12px;
+}
+.rsw-devcon__resize {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  z-index: 2;
+}
+.rsw-devcon__resize--nw { top: 0; left: 0; cursor: nwse-resize; }
+.rsw-devcon__resize--ne { top: 0; right: 0; cursor: nesw-resize; }
+.rsw-devcon__resize--sw { bottom: 0; left: 0; cursor: nesw-resize; }
+.rsw-devcon__resize--se { bottom: 0; right: 0; cursor: nwse-resize; }

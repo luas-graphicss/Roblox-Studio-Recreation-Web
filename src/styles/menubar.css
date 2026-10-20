@@ -1,0 +1,116 @@
+.rsw-menubar {
+  grid-area: menubar;
+  display: flex;
+  align-items: stretch;
+  gap: 1px;
+  height: 100%;
+  padding: 0 4px;
+  background: var(--rsw-bg-titlebar);
+  border-bottom: 1px solid var(--rsw-border-subtle);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.rsw-menubar__btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--rsw-text-secondary);
+  font: inherit;
+  font-size: 12px;
+  padding: 0 9px;
+  cursor: pointer;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.rsw-menubar__btn:hover {
+  background: var(--rsw-hover);
+  color: var(--rsw-text-primary);
+}
+.rsw-menubar__btn.is-open {
+  background: var(--rsw-active);
+  color: var(--rsw-text-primary);
+}
+.rsw-menubar__btn:focus-visible {
+  outline: 2px solid var(--rsw-focus);
+  outline-offset: -2px;
+}
+.rsw-menubar__btn u {
+  text-decoration: none;
+}
+.rsw-menu {
+  position: fixed;
+  z-index: var(--rsw-z-menu);
+  min-width: 240px;
+  max-width: 360px;
+  padding: 4px;
+  background: var(--rsw-bg-elevated, var(--rsw-bg-surface));
+  border: 1px solid var(--rsw-border);
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  color: var(--rsw-text-primary);
+  font-size: 12px;
+}
+
+.rsw-menu__sep {
+  height: 1px;
+  margin: 4px 6px;
+  background: var(--rsw-border-subtle);
+}
+
+.rsw-menu__item {
+  appearance: none;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  display: grid;
+  grid-template-columns: 18px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.rsw-menu__item:hover:not(.is-disabled),
+.rsw-menu__item.is-active:not(.is-disabled) {
+  background: var(--rsw-accent);
+  color: var(--rsw-accent-contrast);
+}
+.rsw-menu__item:focus-visible {
+  outline: none;
+  background: var(--rsw-accent);
+  color: var(--rsw-accent-contrast);
+}
+.rsw-menu__item.is-disabled {
+  color: var(--rsw-text-secondary);
+  opacity: 0.45;
+  cursor: default;
+}
+
+.rsw-menu__check {
+  display: inline-flex;
+  justify-content: center;
+  font-size: 11px;
+}
+.rsw-menu__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rsw-menu__shortcut {
+  color: var(--rsw-text-secondary);
+  font-size: 11px;
+  opacity: 0.85;
+  padding-left: 16px;
+}
+.rsw-menu__item:hover:not(.is-disabled) .rsw-menu__shortcut,
+.rsw-menu__item.is-active:not(.is-disabled) .rsw-menu__shortcut,
+.rsw-menu__item:focus-visible .rsw-menu__shortcut {
+  color: var(--rsw-accent-contrast);
+  opacity: 0.9;
+}

@@ -1,0 +1,26 @@
+{
+  "name": "roblox-studio-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Browser based Roblox Studio style engine and editor. Bundled with Vite; index.html also runs as a standalone static document.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "security:integrity": "node tools/security/computeVendorIntegrity.mjs",
+    "security:audit": "npm audit --audit-level=high",
+    "security:audit:prod": "npm audit --omit=dev --audit-level=high"
+  },
+  "dependencies": {
+    "monaco-editor": "0.45.0",
+    "three": "0.161.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.21"
+  }
+}

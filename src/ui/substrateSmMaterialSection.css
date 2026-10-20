@@ -1,0 +1,99 @@
+.ssm-editor-section {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  color: #e3e8ef;
+  border-top: 1px solid #596576;
+  padding-top: 16px;
+  font: 14px/1.5 system-ui, sans-serif;
+}
+.ssm-editor-section h3 {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.3;
+}
+.ssm-editor-section .ssm-editor-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+}
+.ssm-editor-section label {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+.ssm-editor-section select,
+.ssm-editor-section button {
+  box-sizing: border-box;
+  min-height: 44px;
+  max-width: 100%;
+  min-width: 0;
+  font: inherit;
+  color: inherit;
+  background: #151a21;
+  border: 1px solid #718096;
+  border-radius: 6px;
+  padding: 8px;
+}
+.ssm-editor-section button {
+  justify-self: start;
+  cursor: pointer;
+  padding-inline: 12px;
+}
+.ssm-editor-section button:hover {
+  background: #34455e;
+}
+.ssm-editor-section button:disabled,
+.ssm-editor-section select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.ssm-editor-section :focus-visible {
+  outline: 2px solid #94c2ff;
+  outline-offset: 3px;
+}
+.ssm-editor-section .ssm-editor-note {
+  margin: 0;
+  color: #c4cfdf;
+  overflow-wrap: anywhere;
+}
+.ssm-editor-section .ssm-editor-status {
+  margin: 0;
+  padding: 12px;
+  border-left: 3px solid #94c2ff;
+  background: #171e28;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.ssm-editor-section .ssm-editor-status[data-error="true"] {
+  border-left-color: #ffae89;
+}
+.ssm-editor-section .ssm-editor-report {
+  min-width: 0;
+}
+.ssm-editor-section summary {
+  min-height: 44px;
+  cursor: pointer;
+  padding-block: 8px;
+}
+.ssm-editor-section pre {
+  max-height: 320px;
+  max-width: 100%;
+  margin: 8px 0 0;
+  padding: 12px;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  border: 1px solid #596576;
+  border-radius: 6px;
+  background: #151a21;
+  font: 14px/1.5 ui-monospace, monospace;
+}
+.ssm-editor-section [hidden] {
+  display: none;
+}
+@media (max-width: 540px) {
+  .ssm-editor-section .ssm-editor-controls {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

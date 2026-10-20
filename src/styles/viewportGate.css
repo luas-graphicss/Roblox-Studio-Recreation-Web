@@ -1,0 +1,56 @@
+.rsw-vgate {
+  position: fixed;
+  inset: 0;
+  z-index: var(--rsw-z-viewport-gate);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 32px;
+  text-align: center;
+  background: var(--rsw-bg-app);
+  color: var(--rsw-text-primary);
+  font-family: var(--rsw-font-ui);
+}
+
+.rsw-vgate__title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.rsw-vgate__message {
+  margin: 0;
+  max-width: 44ch;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--rsw-text-secondary);
+}
+.rsw-vgate__dismiss {
+  min-height: 32px;
+  padding: 0 14px;
+  border: 1px solid var(--rsw-border);
+  border-radius: var(--rsw-radius-btn);
+  background: var(--rsw-bg-surface);
+  color: var(--rsw-text-primary);
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.rsw-vgate__dismiss:hover {
+  background: var(--rsw-hover-btn);
+}
+
+.rsw-vgate__dismiss:focus-visible {
+  outline: 2px solid var(--rsw-focus);
+  outline-offset: 2px;
+}
+
+@media (pointer: coarse) {
+  .rsw-vgate__dismiss {
+    min-height: 44px;
+    padding: 0 20px;
+  }
+}

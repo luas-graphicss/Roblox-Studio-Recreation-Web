@@ -1,0 +1,9 @@
+export const VIGNETTE_OWNER = "CP-F24";
+export const VIGNETTE_SETTINGS_KEY = "CP-F24.settings";
+export const VIGNETTE_COLOR_RESOURCE = "CP-F24.color";
+export const VIGNETTE_STATE_RESOURCE = "CP-F24.state";
+export const VIGNETTE_PROFILE = "independent-diagonal-quartic-v1";
+export const VIGNETTE_VOLUME_RESOURCE = "CP-F02.resolvedSettings";
+export const VIGNETTE_VOLUME_PROPERTY = "vignette.intensity";
+export const VIGNETTE_ORDER = 2400;
+export const VIGNETTE_PRECISION = "explicit-binary16-round-to-nearest-even";

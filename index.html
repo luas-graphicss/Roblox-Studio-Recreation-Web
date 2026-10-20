@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' blob: 'wasm-unsafe-eval' https://cdn.jsdelivr.net; style-src 'self' blob: 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: blob: https://fonts.gstatic.com; img-src 'self' data: blob: https://assetdelivery.roblox.com https://tr.rbxcdn.com; media-src 'self' data: blob: https://assetdelivery.roblox.com; connect-src 'self' blob: data: https://cdn.jsdelivr.net https://assetdelivery.roblox.com https://api.openai.com https://api.anthropic.com http://localhost:11434 http://127.0.0.1:11434; worker-src 'self' blob:; child-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'"
+  />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>Roblox Studio Web — Fundação</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+
+  <script src="./src/core/themePreload.js"></script>
+
+  <link rel="stylesheet" href="./src/styles/reset.css" />
+
+  <link rel="stylesheet" href="./src/styles/boot-loading.css" />
+
+  <link rel="stylesheet" href="./src/styles/fonts.css" />
+  <link rel="stylesheet" href="./src/styles/tokens.css" />
+  <link rel="stylesheet" href="./src/styles/shell.css" />
+  <link rel="stylesheet" href="./src/styles/explorer.css" />
+  <link rel="stylesheet" href="./src/styles/properties.css" />
+  <link rel="stylesheet" href="./src/styles/viewport.css" />
+  <link rel="stylesheet" href="./src/styles/ribbon.css" />
+  <link rel="stylesheet" href="./src/styles/menubar.css" />
+  <link rel="stylesheet" href="./src/styles/output.css" />
+  <link rel="stylesheet" href="./src/styles/editor.css" />
+  <link rel="stylesheet" href="./src/styles/view.css" />
+  <link rel="stylesheet" href="./src/styles/startpage.css" />
+  <link rel="stylesheet" href="./src/styles/a11y.css" />
+  <link rel="stylesheet" href="./src/styles/polish.css" />
+  <link rel="stylesheet" href="./src/styles/refine.css" />
+  <link rel="stylesheet" href="./src/styles/desktop.css" />
+
+  <link rel="stylesheet" href="./src/styles/pro-tokens.css" />
+
+  <link rel="stylesheet" href="./src/styles/viewportGate.css" />
+
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/contextmenu.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/dialogs.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/avatar.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/uieditor.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/toolbox.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/assetmanager.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/materialmanager.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/terrain.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/animation.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/plugins.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/physics.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/scriptanalysis.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/debugger.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/persistence.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/localization.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/testtab.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/devconsole.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/collab.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/monetization.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/coregui.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/assistant.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/help.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/creatordashboard.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/validation.css" />
+
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/thumbnail-fallback.css" />
+
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/pro-theme.css" />
+  <link rel="stylesheet" media="not all" data-deferred-style="true" href="./src/styles/pro-panels.css" />
+
+  <script type="importmap" data-static-preview-only="true">{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/"
+  },
+  "integrity": {
+    "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js": "sha384-c1WSdrtrvLWoZQC5zBcuCBhTpWvCcKFvUPFkF9wsEestdGUyCxZPiVXzYCZEPRzJ"
+  }
+}</script>
+</head>
+<body class="rsw-booting">
+
+  <div id="rsw-boot" role="status" aria-live="polite" aria-label="Loading Roblox Studio Web">
+    <div class="rsw-boot__aurora" aria-hidden="true"></div>
+    <div class="rsw-boot__grid" aria-hidden="true"></div>
+    <div class="rsw-boot__vignette" aria-hidden="true"></div>
+
+    <div class="rsw-boot__panel">
+
+      <div class="rsw-boot__stage-3d" aria-hidden="true">
+        <div class="rsw-boot__orbit"></div>
+        <div class="rsw-boot__cube">
+          <span class="rsw-boot__face rsw-boot__face--front"></span>
+          <span class="rsw-boot__face rsw-boot__face--back"></span>
+          <span class="rsw-boot__face rsw-boot__face--right"></span>
+          <span class="rsw-boot__face rsw-boot__face--left"></span>
+          <span class="rsw-boot__face rsw-boot__face--top"></span>
+          <span class="rsw-boot__face rsw-boot__face--bottom"></span>
+        </div>
+        <div class="rsw-boot__shadow"></div>
+      </div>
+
+      <p class="rsw-boot__wordmark">Roblox Studio Web</p>
+      <p id="rsw-boot-title" class="rsw-boot__tagline">Preparing the engine</p>
+
+      <div class="rsw-boot__rail">
+        <div class="rsw-boot__rail-fill"></div>
+      </div>
+
+      <div class="rsw-boot__readout">
+        <span id="rsw-boot-step" class="rsw-boot__step">Starting core services</span>
+        <span id="rsw-boot-percent" class="rsw-boot__percent">0%</span>
+      </div>
+
+      <button id="rsw-boot-retry" class="rsw-boot__retry" type="button" hidden>Reload the page</button>
+    </div>
+  </div>
+
+  <div id="app" aria-label="Roblox Studio Web"></div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
